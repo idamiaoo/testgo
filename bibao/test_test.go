@@ -1,6 +1,7 @@
 package bibao
 
 import (
+	"fmt"
 	"log"
 	"testing"
 )
@@ -24,4 +25,21 @@ func TestGetID(t *testing.T) {
 	for i := 0; i < 10; i++ {
 		log.Println(f2())
 	}
+}
+
+type ud struct {
+	a int
+	b int
+}
+
+func TestNil(t *testing.T) {
+	var u *ud
+	fmt.Println(u)
+	if u == nil {
+		u = &ud{
+			a: 1,
+			b: 2,
+		}
+	}
+	fmt.Println(u)
 }

@@ -70,3 +70,10 @@ func TestCopyV3(t *testing.T) {
 	change(ss)
 	log.Println(ss)
 }
+
+func TestMapS(t *testing.T) {
+	a := make(map[string][]string)
+	a["bohler"] = append(a["bohler"], "sdsdf")
+	a["bohler"] = append(a["bohler"], "dsffffff")
+	fmt.Println(a["bohler"])
+}
