@@ -19,6 +19,7 @@ type keepPickerBuilder struct {
 	sessionMgr SessionMgr
 }
 
+// Build 实现 base.PickerBuilder 的接口方法
 func (b *keepPickerBuilder) Build(info base.PickerBuildInfo) balancer.Picker {
 	if len(info.ReadySCs) == 0 {
 		return base.NewErrPicker(balancer.ErrNoSubConnAvailable)
@@ -33,25 +34,13 @@ func (b *keepPickerBuilder) Build(info base.PickerBuildInfo) balancer.Picker {
 	return p
 }
 
-func (b *keepPickerBuilder) Name(info base.PickerBuildInfo) balancer.Picker {
-	if len(info.ReadySCs) == 0 {
-		return base.NewErrPicker(balancer.ErrNoSubConnAvailable)
-	}
-	p := &keepPicker{
-		sessionMgr: b.sessionMgr,
-	}
-	for sc, sci := range info.ReadySCs {
-		p.subConns = append(p.subConns, &subConn{conn: sc, addr: sci.Address})
-	}
-	p.next = rand.Intn(len(p.subConns))
-	return p
-}
-
+// subConn 连接信息
 type subConn struct {
 	conn balancer.SubConn
 	addr resolver.Address
 }
 
+// keepPicker 会话保持负载均衡选择器
 type keepPicker struct {
 	sessionMgr SessionMgr
 	subConns   []*subConn
@@ -59,6 +48,7 @@ type keepPicker struct {
 	next       int
 }
 
+// Pick 实现 balancer.Picker 接口方法
 func (p *keepPicker) Pick(info balancer.PickInfo) (balancer.PickResult, error) {
 	// 从 context 获取 sessionID
 	sessionID, _ := p.sessionMgr.GetSessionIDFromContext(info.Ctx)
@@ -121,5 +111,4 @@ func (p *keepPicker) Pick(info balancer.PickInfo) (balancer.PickResult, error) {
 	}
 
 	return balancer.PickResult{SubConn: sc.conn}, nil
-
 }
