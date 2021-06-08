@@ -1,10 +1,9 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"time"
-
-	"golang.org/x/net/context"
 )
 
 func main() {
