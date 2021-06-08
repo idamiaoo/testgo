@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"go/cmkj_server/util"
 	"time"
+
+	log "github.com/sirupsen/logrus"
 )
 
 type combinations struct {
@@ -46,14 +47,13 @@ func (c *combinations) next() bool {
 }
 
 func print(data []int) {
-	util.Log.Debug(data)
+	log.Debug(data)
 }
 
 func main() {
 	var base uint64 = 0xffffffffffffffff
 
-	var mark uint64
-	mark = ^(base << 52)
+	mark := ^(base << 52)
 	fmt.Println(mark)
 
 	v := mark
@@ -74,6 +74,6 @@ func main() {
 		copy(tmp, com.comb)
 		hub = append(hub, tmp)
 	}
-	util.Log.Debug(len(hub))
-	util.Log.Debug(time.Now().Sub(start))
+	log.Debug(len(hub))
+	log.Debug(time.Since(start))
 }
