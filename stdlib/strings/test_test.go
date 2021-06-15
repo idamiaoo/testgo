@@ -30,7 +30,7 @@ func lengthOfLongestSubstring(s string) int {
 
 func TestLen(t *testing.T) {
 	//fmt.Println(lengthOfLongestSubstring("abcabcbb"))
-	a := int16(0xFFFF)
+	a := int16(0xFF)
 	fmt.Printf("%d\n", a)
 }
 

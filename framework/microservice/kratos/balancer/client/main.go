@@ -6,18 +6,17 @@ import (
 	"log"
 	"time"
 
-	"google.golang.org/grpc/metadata"
-
-	"github.com/pescaria/testgo/framework/microservice/kratos/balancer/helloworld"
-	"github.com/pescaria/testgo/framework/microservice/kratos/balancer/sessionkeep"
-	"github.com/pescaria/testgo/framework/microservice/kratos/balancer/sessionkeep/session"
+	 "testgo/framework/microservice/kratos/balancer/helloworld"
+	"testgo/framework/microservice/kratos/balancer/sessionkeep"
+	"testgo/framework/microservice/kratos/balancer/sessionkeep/session"
 
 	"github.com/go-kratos/etcd/registry"
 	"github.com/go-kratos/kratos/v2/transport/grpc"
 	"github.com/go-redis/redis/v8"
-	clientv3 "go.etcd.io/etcd/client/v3"
+	 clientv3 "go.etcd.io/etcd/client/v3"
 	ggrpc "google.golang.org/grpc"
 	"google.golang.org/grpc/balancer"
+	"google.golang.org/grpc/metadata"
 )
 
 func main() {

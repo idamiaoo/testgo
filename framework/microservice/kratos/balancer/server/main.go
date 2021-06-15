@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	pb "github.com/pescaria/testgo/framework/microservice/kratos/balancer/helloworld"
+	pb "testgo/framework/microservice/kratos/balancer/helloworld"
 
 	"github.com/go-kratos/etcd/registry"
 	"github.com/go-kratos/kratos/v2"
