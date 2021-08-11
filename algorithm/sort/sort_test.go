@@ -2,38 +2,91 @@ package sort
 
 import (
 	"fmt"
+	"strconv"
 	"testing"
 )
 
-func quickSort(data []int) {
-	base := data[0]
-	p, head := 0, 0
-	tail := len(data) - 1
+func quickSort(nums []int, left, right int) {
+	if left < right {
+		p := partition(nums, left, right)
+		quickSort(nums, left, p-1)
+		quickSort(nums, p+1, right)
+	}
+}
 
-	for head <= tail {
-		for tail >= p && data[tail] >= base {
-			tail--
+func partition(nums []int, left, right int) int {
+	p := nums[right]
+	i := left - 1
+	for j := left; j < right; j++ {
+		if nums[j] < p {
+			i++
+			nums[i], nums[j] = nums[j], nums[i]
 		}
-		if tail >= p {
-			data[p] = data[tail]
-			p = tail
-		}
+	}
+	nums[i+1], nums[right] = nums[right], nums[i+1]
+	return i + 1
+}
 
-		for head <= p && data[head] <= base {
-			head++
+func TestQuickSort(t *testing.T) {
+	a := []int{3, 9, 6, 8, 4, 7, 9, 3, 4, 7, 5}
+	quickSort(a, 0, 10)
+	t.Log(a)
+}
+
+type Node struct {
+	Val  int
+	Next *Node
+}
+
+func (n *Node) String() string {
+	var s string
+	l := n
+	for l != nil {
+		if s != "" {
+			s += "->" + strconv.Itoa(l.Val)
+		} else {
+			s = strconv.Itoa(l.Val)
 		}
-		if head <= p {
-			data[p] = data[head]
-			p = head
-		}
+		l = l.Next
 	}
-	data[p] = base
-	if p > 1 {
-		quickSort(data[:p])
+	return s
+}
+
+func ReverseList(list *Node) *Node {
+	var newList *Node
+	var tmp *Node
+	for list != nil {
+		tmp = list.Next
+		list.Next = newList
+		newList = list
+		list = tmp
 	}
-	if p < len(data)-1 {
-		quickSort(data[p+1:])
+	return newList
+}
+
+func TestReverseList(t *testing.T) {
+	n1 := &Node{
+		Val: 1,
 	}
+	n2 := &Node{
+		Val: 2,
+	}
+	n3 := &Node{
+		Val: 3,
+	}
+	n4 := &Node{
+		Val: 4,
+	}
+	n5 := &Node{
+		Val: 5,
+	}
+	n1.Next = n2
+	n2.Next = n3
+	n3.Next = n4
+	n4.Next = n5
+
+	t.Log(n1)
+	t.Log(ReverseList(n1))
 }
 
 // [1,4] [2,3]
@@ -66,37 +119,6 @@ func TestMerge(t *testing.T) {
 	fmt.Println(mergeSort(m, n))
 }
 
-func quickSortV2(values []int, left, right int) {
-	temp := values[left]
-	p := left
-	i, j := left, right
-
-	for i <= j {
-		for j >= p && values[j] >= temp {
-			j--
-		}
-		if j >= p {
-			values[p] = values[j]
-			p = j
-		}
-
-		if values[i] <= temp && i <= p {
-			i++
-		}
-		if i <= p {
-			values[p] = values[i]
-			p = i
-		}
-	}
-	values[p] = temp
-	if p-left > 1 {
-		quickSortV2(values, left, p-1)
-	}
-	if right-p > 1 {
-		quickSortV2(values, p+1, right)
-	}
-}
-
 func insertionSort(data []int) {
 	for i := 1; i < len(data); i++ {
 		for j := i; j > 0; j-- {
@@ -113,20 +135,6 @@ func TestInsert(t *testing.T) {
 	fmt.Println(a)
 }
 
-func TestQuick(t *testing.T) {
-	a := []int{4, 5, 2, 6, 9, 87, 3, 46, 10, 11, 1}
-	fmt.Println(a)
-	quickSort(a)
-	fmt.Println(a)
-}
-
-func TestQuickV2(t *testing.T) {
-	a := []int{4, 5, 2, 6, 9, 87, 3, 46, 10, 11, 1}
-	fmt.Println(a)
-	quickSortV2(a, 0, len(a)-1)
-	fmt.Println(a)
-}
-
 /*
 4  5  2  6, 9, 87, 3, 46, 10,11
 4  2  5  6, 9, 87, 3, 46, 10,11
@@ -138,6 +146,23 @@ func swap(a, b *int) {
 }
 
 func TestPlus(t *testing.T) {
+	a, b := 1, 2
+	swap(&a, &b)
+	fmt.Println(a, b)
+}
+
+/*     ^ 10
+0 1    & 01
+1 1    | 11
+*/
+
+func Swap(a, b *int) {
+	*a = *a ^ *b
+	*b = *a ^ *b
+	*a = *a ^ *b
+}
+
+func TestSwap(t *testing.T) {
 	a, b := 1, 2
 	swap(&a, &b)
 	fmt.Println(a, b)

@@ -6,8 +6,6 @@ import (
 	"log"
 	"time"
 
-	"google.golang.org/grpc/metadata"
-
 	"github.com/pescaria/testgo/framework/microservice/kratos/balancer/helloworld"
 	"github.com/pescaria/testgo/framework/microservice/kratos/balancer/sessionkeep"
 	"github.com/pescaria/testgo/framework/microservice/kratos/balancer/sessionkeep/session"
@@ -18,6 +16,7 @@ import (
 	clientv3 "go.etcd.io/etcd/client/v3"
 	ggrpc "google.golang.org/grpc"
 	"google.golang.org/grpc/balancer"
+	"google.golang.org/grpc/metadata"
 )
 
 func main() {

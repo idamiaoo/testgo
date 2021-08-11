@@ -4,8 +4,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/json-iterator/go"
-	"github.com/tidwall/gjson"
+	jsoniter "github.com/json-iterator/go"
 	msgpack "gopkg.in/vmihailenco/msgpack.v2"
 )
 
@@ -75,16 +74,6 @@ func BenchmarkMarshalByGjson(b *testing.B) {
 	}
 }
 */
-
-func BenchmarkUnMarshalByGjson(b *testing.B) {
-	bytes, _ := json.Marshal(s)
-	ss := Status{}
-	b.ReportAllocs()
-	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
-		gjson.Unmarshal(bytes, &ss)
-	}
-}
 
 func BenchmarkMarshalByJsonIter(b *testing.B) {
 	b.ReportAllocs()

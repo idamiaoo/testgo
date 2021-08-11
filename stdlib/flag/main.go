@@ -11,6 +11,7 @@ var log *zap.Logger
 
 func init() {
 	l, _ := zap.NewDevelopment()
+	log = l
 }
 
 func main() {

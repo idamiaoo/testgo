@@ -48,3 +48,16 @@ func TestClose(t *testing.T) {
 	}()
 	<-ch
 }
+
+func TestUnInit(t *testing.T) {
+	var ch chan struct{}
+	t.Log(<-ch) // 读未初始化的 channel 阻塞
+}
+
+func TestRepeatReadCloseChannel(t *testing.T) {
+	// 正常读出零值
+	ch := make(chan struct{})
+	close(ch)
+	t.Log(<-ch)
+	t.Log(<-ch)
+}
