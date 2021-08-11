@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/pescaria/testgo/framework/microservice/kratos/balancer/sessionkeep"
+	"testgo/framework/microservice/kratos/balancer/sessionkeep"
 
 	"github.com/go-redis/redis/v8"
 	"github.com/go-redsync/redsync/v4"

@@ -6,6 +6,7 @@ import (
 	"testing"
 )
 
+<<<<<<< HEAD
 func quickSort(nums []int, left, right int) {
 	if left < right {
 		p := partition(nums, left, right)
@@ -88,6 +89,8 @@ func TestReverseList(t *testing.T) {
 	t.Log(n1)
 	t.Log(ReverseList(n1))
 }
+=======
+>>>>>>> 83c2e6e1cddb575cd0d27d235456ee7ded25dc9b
 
 // [1,4] [2,3]
 func mergeSort(m, n []int) []int {
@@ -119,6 +122,10 @@ func TestMerge(t *testing.T) {
 	fmt.Println(mergeSort(m, n))
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 83c2e6e1cddb575cd0d27d235456ee7ded25dc9b
 func insertionSort(data []int) {
 	for i := 1; i < len(data); i++ {
 		for j := i; j > 0; j-- {

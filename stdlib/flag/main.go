@@ -9,11 +9,14 @@ import (
 
 var log *zap.Logger
 
+<<<<<<< HEAD
 func init() {
 	l, _ := zap.NewDevelopment()
 	log = l
 }
 
+=======
+>>>>>>> 83c2e6e1cddb575cd0d27d235456ee7ded25dc9b
 func main() {
 	if len(os.Args) < 2 {
 		log.Error("need subcommand as first argument")

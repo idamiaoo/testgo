@@ -1,4 +1,4 @@
-module github.com/pescaria/testgo
+module testgo
 
 go 1.16
 
@@ -14,6 +14,7 @@ require (
 	github.com/gorilla/mux v1.8.0
 	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/imkira/go-interpol v1.1.0 // indirect
+	github.com/jinzhu/gorm v1.9.16
 	github.com/json-iterator/go v1.1.11
 	github.com/kataras/iris/v12 v12.1.8
 	github.com/kr/text v0.2.0 // indirect
@@ -46,4 +47,6 @@ require (
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/ini.v1 v1.62.0 // indirect
 	gopkg.in/vmihailenco/msgpack.v2 v2.9.1
+	gorm.io/driver/mysql v1.1.0
+	gorm.io/gorm v1.21.11
 )
