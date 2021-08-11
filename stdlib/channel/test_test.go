@@ -48,3 +48,44 @@ func TestClose(t *testing.T) {
 	}()
 	<-ch
 }
+
+type CLocker struct {
+	ch chan struct{}
+}
+
+func (locker *CLocker) Lock() {
+	<-locker.ch
+}
+
+func (locker *CLocker) UnLock() {
+	locker.ch <- struct{}{}
+}
+
+func TestChanLock(t *testing.T) {
+	ch := make(chan struct{}, 1)
+	ch <- struct{}{}
+	l := &CLocker{
+		ch: ch,
+	}
+
+	go func() {
+		t.Log("g1 try hold lock")
+		l.Lock()
+		t.Log("g1 hold lock")
+		time.Sleep(2 * time.Second)
+		l.UnLock()
+		t.Log("g1 release lock")
+	}()
+
+	go func() {
+		t.Log("g2 try hold lock")
+		l.Lock()
+		t.Log("g2 hold lock")
+		time.Sleep(3 * time.Second)
+		l.UnLock()
+		t.Log("g2 release lock")
+
+	}()
+
+	time.Sleep(10 * time.Second)
+}

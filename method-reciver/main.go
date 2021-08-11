@@ -60,6 +60,8 @@ func main() {
 
 	t1.SetName("t1")
 	t1.SayHello("carl")
+	t2.SetName("t2")
+	t2.SayHello("carl")
 
 	p1.SetName("p1")
 	p1.SayHello("carl")
