@@ -3,7 +3,7 @@ package main
 import (
 	"net"
 
-	"github.com/pescaria/testgo/stdlib/tcp/kernelbuf/proto"
+	"testgo/stdlib/tcp/kernelbuf/proto"
 
 	log "github.com/sirupsen/logrus"
 )

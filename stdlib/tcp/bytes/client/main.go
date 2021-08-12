@@ -7,7 +7,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/pescaria/testgo/stdlib/tcp/bytes/proto"
+	"testgo/stdlib/tcp/bytes/proto"
+
 	log "github.com/sirupsen/logrus"
 )
 

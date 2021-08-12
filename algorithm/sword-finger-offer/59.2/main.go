@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 type node struct {
-	k, v int
+	v    int
 	next *node
 }
 
@@ -64,7 +64,12 @@ func (q *MaxQueue) PopFront() int {
 		return 0
 	}
 	nd := q.head
-	q.head = q.head.next
+	if q.head == q.tail {
+		q.head = nil
+		q.tail = nil
+	} else {
+		q.head = q.head.next
+	}
 	if q.mHead.next != nil && nd.v == q.mHead.next.v {
 		q.mHead.next = q.mHead.next.next
 	}
