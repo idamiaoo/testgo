@@ -41,17 +41,17 @@ func TestSkipVerify(t *testing.T) {
 // 验证服务端证书（服务端自签名证书）
 func TestServerVerificationSelf(t *testing.T) {
 	pool := x509.NewCertPool()
-	cacrt, err := ioutil.ReadFile("../keys/cert.pem")
+	caCrt, err := ioutil.ReadFile("../keys/cert.pem")
 	if err != nil {
 		log.Fatal(err)
 	}
-	pool.AppendCertsFromPEM(cacrt)
+	pool.AppendCertsFromPEM(caCrt)
 
 	tr := &http.Transport{
 		TLSClientConfig: &tls.Config{
-			//InsecureSkipVerify: true,
+			// InsecureSkipVerify: true,
 			RootCAs:    pool,
-			ServerName: "localhost", //与证书 Comman Name 相同
+			ServerName: "localhost", // 与证书 Comman Name 相同
 		},
 	}
 	cli := &http.Client{
