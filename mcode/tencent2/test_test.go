@@ -31,7 +31,7 @@ func qsort(arr []int, start, end int) {
 
 /*
 1.
- (1)
+ (1) find
  (2) chmod
  (3)
 
@@ -45,25 +45,23 @@ func isPower2(n int) bool {
 	return findPower2(1, n, n)
 }
 
-func findPower2(star, end, n int) bool {
-	if star > end {
+func findPower2(start, end, n int) bool {
+	if end-start == 1 {
 		return false
 	}
-	if star-end == 1 {
 
-	}
-	x := (star - end) / 2
+	x := (start + end) / 2
 	if x*x == n {
 		return true
 	} else if x*x < n {
-		return findPower2(star, x, n)
-	} else {
 		return findPower2(x, end, n)
+	} else {
+		return findPower2(start, x, n)
 	}
 }
 
 func TestIsPower2(t *testing.T) {
-	t.Log(isPower2(9))
+	t.Log(isPower2(16))
 }
 
 // 3
