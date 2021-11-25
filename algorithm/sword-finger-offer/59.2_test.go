@@ -1,6 +1,9 @@
-package main
+package sword_finger_offer
 
-import "fmt"
+import (
+	"fmt"
+	"testing"
+)
 
 type node struct {
 	v    int
@@ -76,7 +79,7 @@ func (q *MaxQueue) PopFront() int {
 	return nd.v
 }
 
-func main() {
+func TestMaxQueue(t *testing.T) {
 	queue := Constructor()
 	fmt.Println(queue.MaxValue())
 	queue.PushBack(1)
