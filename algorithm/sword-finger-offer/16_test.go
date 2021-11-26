@@ -24,8 +24,7 @@ func myPow(x float64, n int) float64 {
 	if n == 1 {
 		return x
 	}
-
-	if n > 0 {
+	if n > 1 {
 		return myPow(x*x, n/2) * myPow(x, n%2)
 	}
 	return 1 / myPow(x, -n)
