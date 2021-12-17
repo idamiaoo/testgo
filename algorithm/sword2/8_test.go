@@ -7,7 +7,7 @@ import (
 func minSubArrayLen(target int, nums []int) int {
 	var sum int
 	var res int
-	for i, j := 0, 0; j < len(nums); {
+	for i, j := 0, 0; j < len(nums); j++ {
 		sum += nums[j]
 		for sum >= target {
 			if res == 0 || j-i+1 < res {
@@ -16,7 +16,6 @@ func minSubArrayLen(target int, nums []int) int {
 			sum -= nums[i]
 			i++
 		}
-		j++
 	}
 	return res
 }

@@ -5,18 +5,12 @@ import (
 )
 
 func subarraySum(nums []int, k int) int {
-	var res int
-	var sum int
-	for i, j := 0, 0; j < len(nums); {
-		sum += nums[j]
-		for sum > k && i < j {
-			sum -= nums[i]
-			i++
-		}
-		if sum == k {
-			res++
-		}
-		j++
+	m := map[int]int{0: 1}
+	var res, sum int
+	for _, v := range nums {
+		sum += v
+		res += m[sum-k]
+		m[sum]++
 	}
 	return res
 }
