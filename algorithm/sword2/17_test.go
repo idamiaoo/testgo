@@ -16,7 +16,7 @@ func minWindow(s string, t string) string {
 		if m2[s[j]] <= m1[s[j]] {
 			cnt++
 		}
-		for m2[s[i]] > m1[s[i]] {
+		for m2[s[i]] > m1[s[i]] && i < j {
 			m2[s[i]]--
 			i++
 		}
@@ -30,7 +30,6 @@ func minWindow(s string, t string) string {
 }
 
 func Test17(t *testing.T) {
-	a := [10]int{2}
-	b := [10]int{2}
-	t.Log(a == b)
+	var s, tt = "ADOBECODEBANC", "ABC"
+	t.Log(minWindow(s, tt))
 }

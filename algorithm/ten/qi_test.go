@@ -64,3 +64,32 @@ func TestMerge(t *testing.T) {
 func TestUp(t *testing.T) {
 
 }
+
+func permutation(str string) []string {
+	var res []string
+	var backtrack func([]byte, int, []byte)
+	backtrack = func(src []byte, i int, s []byte) {
+		if i < 0 || i >= len(src) || src[i] == ' ' {
+			return
+		}
+		s = append(s, src[i])
+		if len(s) == len(src) {
+			res = append(res, string(s))
+			return
+		}
+		src[i] = ' '
+		for i := 0; i < len(src); i++ {
+			backtrack(src, i, s)
+		}
+		src[i] = s[len(s)-1]
+		s = s[:len(s)-1]
+	}
+	for i := range str {
+		backtrack([]byte(str), i, nil)
+	}
+	return res
+}
+
+func TestPermutation(t *testing.T) {
+	t.Log(permutation("abc"))
+}
