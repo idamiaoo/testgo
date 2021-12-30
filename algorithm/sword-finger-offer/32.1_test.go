@@ -2,26 +2,18 @@ package sword_finger_offer
 
 func levelOrder(root *TreeNode) []int {
 	var ans []int
-
-	var printTree func(root *TreeNode)
-
-	printTree = func(root *TreeNode) {
-		if root == nil {
-			return
+	var nodes []*TreeNode
+	nodes = append(nodes, root)
+	for i := 0; i < len(nodes); i++ {
+		if nodes[i] != nil {
+			ans = append(ans, nodes[i].Val)
+			if nodes[i].Left != nil {
+				nodes = append(nodes, nodes[i].Left)
+			}
+			if nodes[i].Right != nil {
+				nodes = append(nodes, nodes[i].Right)
+			}
 		}
-		ans = append(ans, root.Val)
-		printTree(root.Left)
 	}
-
-	if root == nil {
-		return nil
-	}
-	return nil
-}
-
-func deep(root *TreeNode) int {
-	if root == nil {
-		return 0
-	}
-	return max(1+deep(root.Left), 1+deep(root.Right))
+	return ans
 }

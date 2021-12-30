@@ -1,15 +1,10 @@
-package leetcode
+package sword2
 
 import (
 	"strconv"
 	"strings"
+	"testing"
 )
-
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
 
 type Codec struct {
 }
@@ -68,4 +63,17 @@ func (this *Codec) deserialize(data string) *TreeNode {
 		}
 	}
 	return nodes[0]
+}
+
+func Test48(t *testing.T) {
+	codec := Constructor48()
+	root := &TreeNode{Val: 1}
+	root.Right = &TreeNode{Val: 0}
+	root.Right.Right = &TreeNode{Val: 1}
+	root.Right.Left = &TreeNode{Val: 0}
+
+	t.Log(codec.serialize(root))
+
+	t1 := codec.deserialize("1,1,0,1,1,0,1,0")
+	t.Log(codec.serialize(t1))
 }
