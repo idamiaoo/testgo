@@ -1,5 +1,5 @@
 package sword2
 
-func minimumLengthEncoding(words []string) int {
+func findMaximumXOR(nums []int) int {
 	return 0
 }
