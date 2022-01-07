@@ -16,7 +16,7 @@ func (l *ListNode) String() string {
 		if s == "" {
 			s = fmt.Sprintf("%d", h.Val)
 		} else {
-			s = fmt.Sprintf("%s->%d", s, h.Val)
+			s = fmt.Sprintf("%s,%d", s, h.Val)
 		}
 		h = h.Next
 	}
@@ -36,4 +36,12 @@ func buildList(nums []int) *ListNode {
 		}
 	}
 	return head
+}
+
+func buildLists(nums [][]int) []*ListNode {
+	var lists []*ListNode
+	for _, v := range nums {
+		lists = append(lists, buildList(v))
+	}
+	return lists
 }
