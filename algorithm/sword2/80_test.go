@@ -38,8 +38,9 @@ func Test80(t *testing.T) {
 
 func quanpailie(str string) []string {
 	var ans []string
-	var backtracking func(string, []byte)
-	backtracking = func(str string, path []byte) {
+	var path []byte
+	var backtracking func()
+	backtracking = func() {
 		if len(path) == len(str) {
 			ans = append(ans, string(path))
 		}
@@ -49,12 +50,11 @@ func quanpailie(str string) []string {
 				continue
 			}
 			path = append(path, str[i])
-			l := len(path)
-			backtracking(str, path)
-			path = path[:l-1]
+			backtracking()
+			path = path[:len(path)-1]
 		}
 	}
-	backtracking(str, nil)
+	backtracking()
 	return ans
 }
 
