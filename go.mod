@@ -1,6 +1,6 @@
 module testgo
 
-go 1.18
+go 1.17
 
 require (
 	github.com/flamego/flamego v1.0.0
