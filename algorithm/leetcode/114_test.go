@@ -26,7 +26,7 @@ func flatten(root *TreeNode) {
 }
 
 func Test114(t *testing.T) {
-	codec := Constructor48()
+	codec := Constructor()
 	t1 := codec.deserialize("1,2,5,3,4,null,6")
 	flatten(t1)
 	t.Log(codec.serialize(t1))
