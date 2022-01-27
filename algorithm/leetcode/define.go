@@ -67,3 +67,8 @@ func (this *Codec) deserialize(data string) *TreeNode {
 	return nodes[0]
 }
 */
+
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}

@@ -1,6 +1,7 @@
 package leetcode
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -21,48 +22,38 @@ func removeInvalidParentheses(s string) []string {
 	var ans []string
 	var backtracking func(int, int, int)
 	backtracking = func(l, r int, index int) {
-		if l == 0 && r == 0 && len(path) == len(s)-lRemove-rRemove {
+		if len(path) == len(s)-lRemove-rRemove {
 			if isValid(string(path)) {
 				ans = append(ans, string(path))
 			}
 			return
 		}
-		if index >= len(s) {
+		if index > 0 && s[index] == s[index-1] {
 			return
 		}
-
-		switch s[index] {
-		case '(':
-			if l > 0 {
-				v := index + 1
-				for v < len(s)-1 && s[index] == s[v] {
-					path = append(path, s[index])
-					v++
-				}
-				backtracking(l-1, r, v)
-				path = path[:len(path)-(v-index-1)]
+		if l > 0 && s[index] == '(' {
+			v := index + 1
+			for s[v] == s[index] {
+				v++
 			}
-			path = append(path, s[index])
-			backtracking(l, r, index+1)
-			path = path[:len(path)-1]
-		case ')':
-			if r > 0 {
-				v := index + 1
-				for v < len(s)-1 && s[index] == s[v] {
-					path = append(path, s[index])
-					v++
-				}
-				backtracking(l-1, r, v)
-				path = path[:len(path)-(v-index-1)]
-			}
-			path = append(path, s[index])
-			backtracking(l, r, index+1)
-			path = path[:len(path)-1]
-		default:
-			path = append(path, s[index])
-			backtracking(l, r, index+1)
-			path = path[:len(path)-1]
+			path = append(path, s[index+1:v]...)
+			backtracking(l-1, r, v)
+			path = path[:len(path)-(v-index-1)]
 		}
+
+		if r > 0 && s[index] == ')' {
+			v := index + 1
+			for s[v] == s[index] {
+				v++
+			}
+			path = append(path, s[index+1:v]...)
+			fmt.Println(string(path), v, index)
+			backtracking(l, r-1, v)
+			path = path[:len(path)-(v-index-1)]
+		}
+		path = append(path, s[index])
+		backtracking(l, r, index+1)
+		path = path[:len(path)-1]
 	}
 	backtracking(lRemove, rRemove, 0)
 	return ans
@@ -74,10 +65,10 @@ func isValid(s string) bool {
 		if v == '(' {
 			cnt++
 		} else if v == ')' {
-			if cnt == 0 {
+			cnt--
+			if cnt < 0 {
 				return false
 			}
-			cnt--
 		}
 	}
 	return cnt == 0
