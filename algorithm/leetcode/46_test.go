@@ -5,29 +5,31 @@ import (
 )
 
 func permute(nums []int) [][]int {
-	var result [][]int
-	for i := range nums {
-		dfs(nums, nil, i, &result)
+	var path []int
+	var ans [][]int
+	choice := make(map[int]bool)
+
+	var backtracking func()
+	backtracking = func() {
+		if len(path) == len(nums) {
+			ans = append(ans, append([]int{}, path...))
+			return
+		}
+		for i := 0; i < len(nums); i++ {
+			if choice[i] {
+				continue
+			}
+			path = append(path, nums[i])
+			choice[i] = true
+			backtracking()
+			choice[i] = false
+			path = path[:len(path)-1]
+		}
 	}
-	return result
+	backtracking()
+	return ans
 }
 
-func dfs(s, p []int, i int, result *[][]int) {
-	if s[i] == -11 {
-		return
-	}
-	p = append(p, s[i])
-	if len(p) == len(s) {
-		*result = append(*result, p)
-		return
-	}
-	s[i] = -11
-	for ii := range s {
-		dfs(s, p, ii, result)
-	}
-	s[i] = p[len(p)-1]
-}
-
-func TestPermute(t *testing.T) {
+func Test46(t *testing.T) {
 	t.Log(permute([]int{1, 2, 3}))
 }

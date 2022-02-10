@@ -77,3 +77,34 @@ func TestMapS(t *testing.T) {
 	a["bohler"] = append(a["bohler"], "dsffffff")
 	fmt.Println(a["bohler"])
 }
+
+func TestAppend2(t *testing.T) {
+	nums := []int{1}
+	v := len(nums)
+	for i := 0; i < v; i++ {
+		t.Log(nums[i])
+		if i <= 3 {
+			nums = append(nums, i+3)
+		}
+	}
+}
+
+func TestAppend3(t *testing.T) {
+	nums := []int{1}
+	for i := range nums {
+		t.Log(nums[i])
+		if i <= 3 {
+			nums = append(nums, i+3)
+		}
+	}
+}
+
+func TestAppend4(t *testing.T) {
+	nums := []int{1, 2, 3, 4, 5}
+	for i, v := range nums {
+		t.Log(v)
+		if i == 1 {
+			nums = nums[2:]
+		}
+	}
+}
