@@ -21,8 +21,11 @@ func connect(root *Node) *Node {
 				head.Next = p.Left
 				head = head.Next
 			}
-
+			head.Next = p.Right
+			head = head.Next
+			p = p.Next
 		}
+		temp = temp.Left
 	}
 	return root
 }
