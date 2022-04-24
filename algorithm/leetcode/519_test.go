@@ -18,7 +18,7 @@ func Constructor(m int, n int) Solution {
 }
 
 func (this *Solution) Flip() []int {
-
+	return nil
 }
 
 func (this *Solution) Reset() {

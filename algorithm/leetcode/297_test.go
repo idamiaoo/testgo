@@ -17,7 +17,7 @@ import (
 type Codec struct {
 }
 
-func Constructor() Codec {
+func Constructor297() Codec {
 	return Codec{}
 }
 
