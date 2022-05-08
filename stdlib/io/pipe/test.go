@@ -8,6 +8,5 @@ import (
 
 func TestPipe(t *testing.T) {
 	io.Pipe()
-	io.TeeReader()
 	time.Now()
 }

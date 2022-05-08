@@ -27,3 +27,16 @@ func largestRectangleArea(heights []int) int {
 func Test39(t *testing.T) {
 	t.Log(largestRectangleArea([]int{2, 1, 2}))
 }
+
+func largestRectangleArea2(heights []int) int {
+	heights = append(heights, -1)
+	st := newStack()
+	st.Put(-1)
+	for i := range heights {
+		for st.Top() != -1 && heights[i] < heights[st.Top()] {
+			height := heights[st.Top()]
+			st.Pop()
+
+		}
+	}
+}
