@@ -12,3 +12,13 @@ func maxSubArray(nums []int) int {
 	}
 	return max
 }
+
+func f55(nums []int) bool {
+	for i := 0; i < len(nums); i++ {
+		if i+nums[i] >= len(nums)-1 {
+			return true
+		}
+
+	}
+	return false
+}
