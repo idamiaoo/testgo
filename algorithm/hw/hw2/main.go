@@ -19,13 +19,13 @@ func main() {
 
 func minNumber(nums []string, n int) int {
 	var (
-		ans         = math.MaxInt64
-		path        []string
-		backtracing func(int)
-		choice      = make(map[int]bool)
+		ans          = math.MaxInt64
+		path         []string
+		backtracking func(int)
+		choice       = make(map[int]bool)
 	)
 
-	backtracing = func(count int) {
+	backtracking = func(count int) {
 		if count == n || len(path) == len(nums) {
 			var s string
 			for _, v := range path {
@@ -43,12 +43,12 @@ func minNumber(nums []string, n int) int {
 			}
 			choice[i] = true
 			path = append(path, nums[i])
-			backtracing(count + 1)
+			backtracking(count + 1)
 			path = path[:len(path)-1]
 			choice[i] = false
 		}
 	}
 
-	backtracing(0)
+	backtracking(0)
 	return ans
 }
