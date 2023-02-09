@@ -3,8 +3,9 @@ module testgo
 go 1.18
 
 require (
+	github.com/Luzifer/go-openssl/v4 v4.1.0
 	github.com/flamego/flamego v1.0.0
-	github.com/gin-gonic/gin v1.7.2
+	github.com/gin-gonic/gin v1.7.7
 	github.com/go-kratos/etcd v0.1.0
 	github.com/go-kratos/kratos/v2 v2.0.0-rc1
 	github.com/go-redis/redis/v8 v8.9.0
@@ -34,7 +35,6 @@ require (
 	github.com/BurntSushi/toml v0.3.1 // indirect
 	github.com/CloudyKit/fastprinter v0.0.0-20200109182630-33d98a066a53 // indirect
 	github.com/CloudyKit/jet/v3 v3.0.0 // indirect
-	github.com/Luzifer/go-openssl/v4 v4.1.0 // indirect
 	github.com/Shopify/goreferrer v0.0.0-20181106222321-ec9c9a553398 // indirect
 	github.com/ajg/form v1.5.1 // indirect
 	github.com/alecthomas/participle/v2 v2.0.0-alpha7 // indirect
