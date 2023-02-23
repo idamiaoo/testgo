@@ -3,6 +3,7 @@ module testgo
 go 1.18
 
 require (
+	github.com/Luzifer/go-openssl/v4 v4.1.0
 	github.com/flamego/flamego v1.0.0
 	github.com/gin-gonic/gin v1.7.2
 	github.com/go-kratos/etcd v0.1.0
@@ -34,7 +35,6 @@ require (
 	github.com/BurntSushi/toml v0.3.1 // indirect
 	github.com/CloudyKit/fastprinter v0.0.0-20200109182630-33d98a066a53 // indirect
 	github.com/CloudyKit/jet/v3 v3.0.0 // indirect
-	github.com/Luzifer/go-openssl/v4 v4.1.0 // indirect
 	github.com/Shopify/goreferrer v0.0.0-20181106222321-ec9c9a553398 // indirect
 	github.com/ajg/form v1.5.1 // indirect
 	github.com/alecthomas/participle/v2 v2.0.0-alpha7 // indirect
@@ -102,8 +102,8 @@ require (
 	go.opentelemetry.io/otel/trace v0.20.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/multierr v1.7.0 // indirect
-	golang.org/x/sys v0.0.0-20211117180635-dee7805ff2e1 // indirect
-	golang.org/x/text v0.3.7 // indirect
+	golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f // indirect
+	golang.org/x/text v0.3.8 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/ini.v1 v1.62.0 // indirect
